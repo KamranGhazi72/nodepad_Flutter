@@ -65,10 +65,23 @@ class NoteTabBarMain extends StatelessWidget {
                                 padding: EdgeInsets.symmetric(vertical: 8),
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1, color: Colors.blueGrey[50]),
-                                      color: Color(0xFFF4FBFF),
-                                      borderRadius: BorderRadius.circular(7)),
+                                    // border: Border.all(
+                                    //     width: 1, color: Colors.blueGrey[50]),
+                                    border: Border(
+                                        left: BorderSide(
+                                            width: 7, color: Colors.lime),
+                                        top: BorderSide(
+                                            width: 1,
+                                            color: Colors.blueGrey[50]),
+                                        bottom: BorderSide(
+                                            width: 1,
+                                            color: Colors.blueGrey[50]),
+                                        right: BorderSide(
+                                            width: 1,
+                                            color: Colors.blueGrey[50])),
+                                    color: Color(0xFFF4FBFF),
+                                    // borderRadius: BorderRadius.circular(7)
+                                  ),
                                   child: Padding(
                                     padding: EdgeInsets.all(8.0),
                                     child: Row(
