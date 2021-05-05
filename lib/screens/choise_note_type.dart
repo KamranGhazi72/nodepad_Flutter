@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nodepad_plus/screens/create_note.dart';
+import 'package:nodepad_plus/screens/create_task.dart';
 
 class ChoiseNoteType extends StatelessWidget {
   @override
@@ -64,7 +65,10 @@ class ChoiseNoteType extends StatelessWidget {
               highlightedBorderColor: Colors.black45,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CreateTask()));
+              },
             ),
           ),
           Container(
