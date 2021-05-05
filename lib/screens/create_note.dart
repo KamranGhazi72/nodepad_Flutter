@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nodepad_plus/models/chat_message_model.dart';
 
@@ -11,33 +12,6 @@ class _CreateNoteState extends State<CreateNote> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   iconTheme: IconThemeData(
-      //     color: Colors.black87,
-      //   ),
-      //   title: Text(
-      //     'Insert New Note',
-      //     style: TextStyle(color: Colors.black87),
-      //   ),
-      //   backgroundColor: Colors.white,
-      //   bottomOpacity: 0.5,
-      // ),
-      // body: Container(
-      //   child: Padding(
-      //     padding: EdgeInsets.all(20.0),
-      //     child: Column(children: [
-      //       TextField(
-      //         maxLines: null,
-      //         keyboardType: TextInputType.multiline,
-      //         decoration: InputDecoration(
-      //           border: OutlineInputBorder(),
-      //           labelText: 'Note Title',
-      //           hintText: 'Enter Your Title',
-      //         ),
-      //       ),
-      //     ]),
-      //   ),
-      // ),
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
@@ -96,14 +70,14 @@ class _CreateNoteState extends State<CreateNote> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: <Widget>[
-            ListView.builder(
+      body: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          ListView.builder(
               itemCount: messages.length,
               shrinkWrap: true,
-              padding: EdgeInsets.only(top: 10, bottom: 10),
-              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.only(top: 10, bottom: 60),
+              physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
                 return Container(
                   padding:
@@ -127,63 +101,60 @@ class _CreateNoteState extends State<CreateNote> {
                     ),
                   ),
                 );
-              },
-            ),
-            Positioned(
-              bottom: 10,
-              child: Container(
-                padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
-                height: 60,
-                width: double.infinity,
-                color: Colors.white,
-                child: Row(
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                          color: Colors.lightBlue,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 20,
-                        ),
+              }),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(left: 10, bottom: 10, top: 10),
+              height: 60,
+              width: double.infinity,
+              color: Colors.white,
+              child: Row(
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.lightBlue,
+                        borderRadius: BorderRadius.circular(30),
                       ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                            hintText: "Write message...",
-                            hintStyle: TextStyle(color: Colors.black54),
-                            border: InputBorder.none),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    FloatingActionButton(
-                      onPressed: () {},
                       child: Icon(
-                        Icons.send,
+                        Icons.add,
                         color: Colors.white,
-                        size: 18,
+                        size: 20,
                       ),
-                      backgroundColor: Colors.blue,
-                      elevation: 0,
                     ),
-                  ],
-                ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: "Write message...",
+                          hintStyle: TextStyle(color: Colors.black54),
+                          border: InputBorder.none),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  FloatingActionButton(
+                    onPressed: () {},
+                    child: Icon(
+                      Icons.send,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                    backgroundColor: Colors.blue,
+                    elevation: 0,
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
